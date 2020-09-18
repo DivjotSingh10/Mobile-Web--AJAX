@@ -1,0 +1,3 @@
+<h3>This is output for concept 1</h3>
+<p>The area and content was updated from a local file, but the entire page was not updated because of the ASYNCHRONOUS nature of AJAX. <p>
+

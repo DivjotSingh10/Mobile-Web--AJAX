@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Divjot Chawla- A3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="ajaxjson.css" />
+</head>
+
+<body>
+  <script src="ajaxjson.js"></script>
+  <h1>Assignment 3- AJAX/JSON</h1>
+  <hr />
+  <nav>
+    <h3> What is AJAX? </h3>
+    <p>
+      <b>AJAX stands for Asynchronous JavaScript and XMl. AJAX is not an application or language, it is a new technique
+        for creating better,
+        faster and more interactive web applications with help of XML, HTML, CSS and JavaScript.</b> AJAX just uses a
+      combination of:<br>
+      1. A browser built-in XMLHttpRequest object (to request data from a web server)<br>
+      2. JavaScript and HTML DOM (to display or use the data)</p>
+    <p><b>AJAX advantages are:</b> <br>
+      1. Can perform GET and POST requests.<br>
+      2. It can be used to retrieve data from Text file, HTML, XML or
+      JSON data from a remote server.<br>
+      <br>
+      <b>AJAX disadvantages are:</b><br>
+      1. Security is less in AJAX applications as files are downloaded at user side. <br>
+      2. JavaSciprt disabled browsers cannot use the application.<br>
+    <h3> What is JSON? </h3>
+    <b>
+      JSON (JavaScript Object Notation) is a lightweight format that is used for data interchanging. It is based on a
+      subset of
+      JavaScript language.</b><br><br>
+    <b>JSON advantages are:</b><br>
+    1. JSON is (mostly) native to JavaScript, which means you don't have to do computationally-expensive XSL
+    transformations to extract the data.<br>
+    2. JSON is light, as it can represent the same data in XML in fewer bytes, making network transmissions and
+    read/writes faster.<br>
+    <br>
+    <b>JSON disadvantages are:</b><br>
+    1. Far less bloated, easier to parse and arguably more human readable (if you space it out properly).<br>
+    2. Not quite as powerful: not expressive enough to separate attributes from values.<br>
+    </p>
+  </nav>
+  <hr />
+  <nav>
+    <a href="#concept-1">
+      <em>CONCEPT 1 - Retrieving from a TEXT file and updating portion of page.</em>
+    </a><br>
+    <hr />
+    <a href="#concept-2">
+      <em>CONCEPT 2 - Receiving data from remote file.</em>
+    </a><br>
+    <hr />
+    <a href="#concept-3">
+      <em>CONCEPT 3 - JSON Array of objects.</em>
+    </a><br>
+    <hr />
+    <a href="#concept-4">
+      <em>CONCEPT 4 - JSON.stringify() method.</em>
+    </a><br>
+    <hr />
+  </nav>
+  <section>
+    <div id="concept-1">
+      <h2>
+        CONCEPT 1: Retrieving from a TEXT file and updating portion of page.
+      </h2>
+      <button onclick="concept1()">Click me for CONCEPT 1</button>
+      <h2>CONCEPT OUTPUT:</h2>
+      <div id="concept1"></div>
+      <h2>CONCEPT CODE:</h2>
+      <code>
+          <pre>
+            function concept1() {
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                  document.getElementById('concept1').innerHTML = this.responseText;
+                }
+              };
+              xhttp.open('GET', 'Divjot.txt', true);
+              xhttp.send();
+            }
+            </pre>
+        </code>
+      <h2>EXPLANATION:</h2>
+      <p>
+        Using Ajax we can make a request using HTTP to a local file. Further using
+        DOM manipulation to insert the content of that local file on the page. The benefit is
+        that we can request data and receive it as well. This is acheived by using <i> XMLHttpRequest</i>.
+      </p>
+    </div>
+
+
+    <div id="concept-2">
+      <h2>
+        CONCEPT 2: Receiving data from remote file
+      </h2>
+      <button onclick="concept2()">Click me for CONCEPT 2</button>
+      <h2>PROGRAM OUTPUT:</h2>
+      <div id="concept2"></div>
+      <h2>PROGRAM CODE:</h2>
+      <code>
+            <pre>
+              function concept2() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                  if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('concept2').innerHTML = this.responseText;
+                  }
+                };
+                xhttp.open('GET', 'Divjot.json', true);
+                xhttp.send();
+              }
+            </pre>
+          </code>
+      <h2>PROGRAM EXPLANATION:</h2>
+      <p>
+        The above code snippet shows that we used a JSON file "Divjot.json", then retreived all its data
+        to show it on the page. This shows the second concept of retrieval of data from a local json file.
+      </p>
+    </div>
+    <div id="concept-3">
+      <h2>
+        CONCEPT 3: JSON Array of objects
+      </h2>
+
+      <h2>PROGRAM OUTPUT:</h2>
+      <p>
+        The array can be used to fetch the data of four objects (students in this case) and can be displayed just as
+        shown in concept-2.
+        This can be acheived by looping through the array.
+      </p>
+      <h2>PROGRAM CODE:</h2>
+      <code>
+            <pre>
+              {"Student":[    
+              {
+                "name":"Divjot", "email":"DivjotC@gmail.com", "age":20
+              },    
+              {
+                "name":"Sylvia", "email":"syl23@gmail.com", "age":21
+              },  
+              { 
+                "name":"Raman", "email":"RamanSingh@gmail.com", "age":12
+              },    
+              {
+                "name":"Jaskaran", "email":"jassi32@gmail.com", "age":21
+              }   
+          ]}  
+            </pre>
+          </code>
+      <h2>PROGRAM EXPLANATION:</h2>
+      <p>
+        The JSON file start with Student array that contain for objects. Furthermore, Each of these four objects have
+        three properties of
+        name, email and age. The properties of the objects are in name-value pairs. There are several online platforms
+        which can validate a
+        JSON file for us. It can store string, number, boolean or object in JSON array.
+      </p>
+    </div>
+
+    <div id="concept-4">
+      <h2>
+        CONCEPT 4: JSON.stringify() method
+      </h2>
+      <h2>PROGRAM OUTPUT:</h2>
+      <p><code><pre>
+         {"x":5,"y":6}
+
+         [3,"false",false]
+         </pre> </code>
+      </p>
+      <h2>PROGRAM CODE:</h2>
+      <code>
+            <pre>
+              console.log(JSON.stringify({ x: 5, y: 6 }));
+
+              console.log(JSON.stringify([new Number(3), new String('false'), new Boolean(false)]));
+            </pre>
+          </code>
+      <h2>PROGRAM EXPLANATION:</h2>
+      <p>
+        The JSON.stringify() method converts a JavaScript object or value to a JSON string, Additionally replacing
+        values
+        if a replacer function is specified or optionally including only the specified properties if a replacer array is
+        specified.
+        If the values are Boolean, Number, and String objects are converted to the corresponding primitive values during
+        stringification, in accord with the traditional conversion semantics. It can also JSON.stringify() can return
+        undefined
+        when passing in "pure" values like JSON.stringify(function(){}) or JSON.stringify(undefined).
+      </p>
+    </div>
+  </section>
+</body>
+
+</html>
